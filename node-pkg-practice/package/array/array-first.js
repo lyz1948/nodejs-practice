@@ -1,0 +1,19 @@
+const isNumber = require('../number/is-number')
+const arraySlice = require('./array-slice')
+
+module.exports = function arrayFirst(arr, num) {
+  if (!Array.isArray(arr)) {
+    throw new Error('array-first expects an array as the first argument.')
+  }
+
+  if (arr.length === 0) {
+    return null
+  }
+
+  var first = arraySlice(arr, 0, isNumber(num) ? +num : 1)
+  if (+num === 1 || num == null) {
+    return first[0]
+  }
+
+  return first
+}
